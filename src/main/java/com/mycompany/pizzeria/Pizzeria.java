@@ -24,14 +24,14 @@ public class Pizzeria {
         String colaborador = "admin";
         int contraAdmin = 456;
 
-        String opcionesIniciales [] = {"Salir","Iniciar sesión"};
+        String opcionesIniciales [] = {"Iniciar sesión","Salir"};
         opcion = JOptionPane.showOptionDialog(null,"Desea iniciar sesion o salir?", 
                 "Pizzería Fidelitas",JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,null,opcionesIniciales,opcionesIniciales[0]);
         
         
         
             do {
-                if(opcion == 1){
+                if(opcion == 0){
                 
                     String usuario = JOptionPane.showInputDialog(null, "Ingrese su usuario", "Pizzeria-JAVA",JOptionPane.DEFAULT_OPTION);
                     int contraseña = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su contraseña", "Pizzería Fidelitas",JOptionPane.DEFAULT_OPTION));
@@ -49,6 +49,6 @@ public class Pizzeria {
                     }
                     
                 }  
-            } while(opcion !=0);      
+            } while(opcion !=1);      
     }
 }
