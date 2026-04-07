@@ -9,72 +9,32 @@ import com.mycompany.pizzeria.newpackage.Categoria.Categorias;
  * @author efran
  */
 public class Producto {
-    private int codigoPizza;
-    private int codigoBebida;
-    private int codigoAcompañamiento;
-    private String nombrePizza;
-    private String nombreBebida;
-    private String nombreAcompañamiento;
+    private int codigo;
+    private String nombre;
     private double precioProducto;
     private Categorias categoriaProducto;
 
-    public Producto(int codigoPizza, int codigoBebida, int codigoAcompañamiento, String nombrePizza, String nombreBebida, String nombreAcompañamiento, double precioProducto, Categorias categoriaProducto) {
-        this.codigoPizza = codigoPizza;
-        this.codigoBebida = codigoBebida;
-        this.codigoAcompañamiento = codigoAcompañamiento;
-        this.nombrePizza = nombrePizza;
-        this.nombreBebida = nombreBebida;
-        this.nombreAcompañamiento = nombreAcompañamiento;
+    public Producto(int codigo, String nombre, double precioProducto, Categorias categoriaProducto) {
+        this.codigo = codigo;
+        this.nombre = nombre;
         this.precioProducto = precioProducto;
         this.categoriaProducto = categoriaProducto;
     }
 
-    public int getCodigoPizza() {
-        return codigoPizza;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setCodigoPizza(int codigoPizza) {
-        this.codigoPizza = codigoPizza;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
-    public int getCodigoBebida() {
-        return codigoBebida;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCodigoBebida(int codigoBebida) {
-        this.codigoBebida = codigoBebida;
-    }
-
-    public int getCodigoAcompañamiento() {
-        return codigoAcompañamiento;
-    }
-
-    public void setCodigoAcompañamiento(int codigoAcompañamiento) {
-        this.codigoAcompañamiento = codigoAcompañamiento;
-    }
-
-    public String getNombrePizza() {
-        return nombrePizza;
-    }
-
-    public void setNombrePizza(String nombrePizza) {
-        this.nombrePizza = nombrePizza;
-    }
-
-    public String getNombreBebida() {
-        return nombreBebida;
-    }
-
-    public void setNombreBebida(String nombreBebida) {
-        this.nombreBebida = nombreBebida;
-    }
-
-    public String getNombreAcompañamiento() {
-        return nombreAcompañamiento;
-    }
-
-    public void setNombreAcompañamiento(String nombreAcompañamiento) {
-        this.nombreAcompañamiento = nombreAcompañamiento;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public double getPrecioProducto() {
@@ -95,8 +55,8 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "codigoPizza=" + codigoPizza + ", codigoBebida=" + codigoBebida + ", codigoAcompa\u00f1amiento=" + codigoAcompañamiento + ", nombrePizza=" + nombrePizza + ", nombreBebida=" + nombreBebida + ", nombreAcompa\u00f1amiento=" + nombreAcompañamiento + ", precioProducto=" + precioProducto + ", categoriaProducto=" + categoriaProducto + '}';
+        return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", precioProducto=" + precioProducto + ", categoriaProducto=" + categoriaProducto + '}';
     }
     
     
-}
+}    

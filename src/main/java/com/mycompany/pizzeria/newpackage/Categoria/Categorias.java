@@ -9,5 +9,6 @@ package com.mycompany.pizzeria.newpackage.Categoria;
  * @author efran
  */
 public enum Categorias {
+    Pizza, Aconpañamiento, Bebida
     
 }
