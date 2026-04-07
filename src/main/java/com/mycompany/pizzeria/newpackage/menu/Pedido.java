@@ -9,5 +9,17 @@ package com.mycompany.pizzeria.newpackage.menu;
  * @author efran
  */
 public class Pedido {
+    public static void mostrarMenu(){
+        
+    }
+    
+    public static void agregarProducto(){
+        
+    }
+    
+    public static void borrarProducto(){
+        
+    }
+    
     
 }

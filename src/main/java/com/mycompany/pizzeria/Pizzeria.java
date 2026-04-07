@@ -42,7 +42,7 @@ public class Pizzeria {
 
                     } else if(usuario.equalsIgnoreCase(colaborador)&&contraseña == contraAdmin) {
                         
-                                gestor.permisosColaborador();
+                        gestor.permisosColaborador();
 
                     } else {
                         JOptionPane.showMessageDialog(null, "No tiene acceso");
