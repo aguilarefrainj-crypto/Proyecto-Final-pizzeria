@@ -5,64 +5,52 @@
 package com.mycompany.pizzeria.newpackage;
 
 import javax.swing.JOptionPane;
+import com.mycompany.pizzeria.newpackage.menu.Pedido;
 
 /**
  *
- * @author jbracam 
+ * @author jbracam
  */
 public class Cliente {
-    
-       public void clienteMenu() {
 
-        int opcion = 0;
+    public void clienteMenu() {
+        Pedido gestion = new Pedido();
+        {
 
-        do {
-            String opciones[] = {"Salir","Pagar", "Borrar un producto","Ver menú", "Agregar producto"};
+            int opcion = 0;
 
-            opcion = JOptionPane.showOptionDialog(
-                    null,
-                    "Seleccione una opción del sistema",
-                    "Pizzería Fidelitas - Cliente",
-                    JOptionPane.DEFAULT_OPTION,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    opciones,
-                    opciones[4]
-            );
+            do {
+                String opciones[] = {"Ver menú","Agregar producto","Borrar un producto","Pagar","Salir"};
 
-            switch (opcion) {
-                case 4:
-                    agregarProducto();
-                    break;
-                case 3:
-                    verMenu();
-                    break;
-                case 2:
-                    borrarProducto();
-                    break;
-                case 1:
-                    pagarProducto();
-                    break;
-            }
+                opcion = JOptionPane.showOptionDialog(
+                        null,
+                        "Seleccione una opción del sistema",
+                        "Pizzería Fidelitas - Cliente",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        opciones,
+                        opciones[4]
+                );
 
-        } while (opcion != 0 && opcion != JOptionPane.CLOSED_OPTION);
+                switch (opcion) {
+                    case 0:
+                        gestion.verMenu();
+                        break;
+                    case 1:
+                        gestion.agregarProducto();
+                        break;
+                    case 2:
+                        gestion.borrarProducto();
+                        break;
+                    case 3:
+                        gestion.pagarProducto();
+                        break;
+                }
 
-        JOptionPane.showMessageDialog(null, "Sesión cerrada. ¡Hasta pronto!", "Pizzería Fidelitas", JOptionPane.INFORMATION_MESSAGE);
-    }
+            } while (opcion != 4 && opcion != JOptionPane.CLOSED_OPTION);
 
-    private void agregarProducto() {
-        JOptionPane.showMessageDialog(null, "Función: Agregar producto\n(En desarrollo)", "Agregar producto", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    private void verMenu() {
-        JOptionPane.showMessageDialog(null, "Función: Ver menú\n(En desarrollo)", "Ver menú", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    private void borrarProducto() {
-        JOptionPane.showMessageDialog(null, "Función: Borrar producto\n(En desarrollo)", "Borrar producto", JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    private void pagarProducto(){
-        JOptionPane.showMessageDialog(null, "Funcion: Pagar producto\n(En desarrollo", "Pagar Cuenta", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Sesión cerrada. ¡Hasta pronto!", "Pizzería Fidelitas", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }
