@@ -28,11 +28,11 @@ public class Pedido {
 
     /*Opciones de Colaborador*/
     public static void verMenu() {
-        /* Esta sirve tanto para colaborador como cliente */
         if (contador == 0) {
             JOptionPane.showMessageDialog(null, "No hay nada en el menú.");
             return;
         }
+
         String informacion = "Tenemos los siguinetes productos disponibles:\n";
         for (int i = 0; i < contador; i++) {
             informacion += producto[i].toString();
@@ -46,12 +46,59 @@ public class Pedido {
     public static void agregarProductoMenu() {
         if (contador < producto.length) {
             int codigo = contador + 1;
-            String titulo = JOptionPane.showInputDialog("Nombre del producto: ");
-            double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del producto en ₡: "));
+
+            String titulo = "";
+            do {
+                titulo = JOptionPane.showInputDialog("Nombre del producto: ");
+
+                if (titulo == null) {
+                    return;
+                }
+
+                if (titulo.trim().equals("")) {
+                    JOptionPane.showMessageDialog(null, "El nombre del producto no puede ir vacío");
+                }
+
+            } while (titulo.trim().equals(""));
+
+            String precioTexto = "";
+            boolean precioValido = false;
+
+            do {
+                precioTexto = JOptionPane.showInputDialog("Ingrese el precio del producto en ₡: ");
+
+                if (precioTexto == null) {
+                    return;
+                }
+
+                if (precioTexto.trim().equals("")) {
+                    JOptionPane.showMessageDialog(null, "El precio no puede ir vacío");
+                } else {
+                    precioValido = true;
+
+                    for (int i = 0; i < precioTexto.length(); i++) {
+                        if (!Character.isDigit(precioTexto.charAt(i)) && precioTexto.charAt(i) != '.') {
+                            precioValido = false;
+                        }
+                    }
+
+                    if (precioValido == false) {
+                        JOptionPane.showMessageDialog(null, "El precio debe ser numérico");
+                    }
+                }
+
+            } while (precioTexto.trim().equals("") || precioValido == false);
+
+            double precio = Double.parseDouble(precioTexto);
 
             Categorias categorias[] = Categorias.values();
             int seleccion = JOptionPane.showOptionDialog(null, "Escoja la categoria del producto: ", "Categorias",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, categorias, categorias[0]);
+
+            if (seleccion == -1) {
+                return;
+            }
+
             Categorias categoria = categorias[seleccion];
 
             producto[contador++] = new Producto(codigo, titulo, precio, categoria);
@@ -62,7 +109,40 @@ public class Pedido {
     }
 
     public static void editarProductoMenu() {
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite el codigo a modificar"));
+        if (contador == 0) {
+            JOptionPane.showMessageDialog(null, "No hay productos en el menú");
+            return;
+        }
+
+        String codigoTexto = "";
+        boolean codigoValido = false;
+
+        do {
+            codigoTexto = JOptionPane.showInputDialog("Digite el codigo a modificar");
+
+            if (codigoTexto == null) {
+                return;
+            }
+
+            if (codigoTexto.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "El código no puede ir vacío");
+            } else {
+                codigoValido = true;
+
+                for (int i = 0; i < codigoTexto.length(); i++) {
+                    if (!Character.isDigit(codigoTexto.charAt(i))) {
+                        codigoValido = false;
+                    }
+                }
+
+                if (codigoValido == false) {
+                    JOptionPane.showMessageDialog(null, "El código debe ser numérico");
+                }
+            }
+
+        } while (codigoTexto.trim().equals("") || codigoValido == false);
+
+        int codigo = Integer.parseInt(codigoTexto);
         Producto productos = null;
 
         for (int i = 0; i < contador; i++) {
@@ -71,8 +151,37 @@ public class Pedido {
                 break;
             }
         }
+
         if (productos != null) {
-            double precio = Double.parseDouble(JOptionPane.showInputDialog("Nuevo precio del producto seleccionado"));
+            String precioTexto = "";
+            boolean precioValido = false;
+
+            do {
+                precioTexto = JOptionPane.showInputDialog("Nuevo precio del producto seleccionado");
+
+                if (precioTexto == null) {
+                    return;
+                }
+
+                if (precioTexto.trim().equals("")) {
+                    JOptionPane.showMessageDialog(null, "El precio no puede ir vacío");
+                } else {
+                    precioValido = true;
+
+                    for (int i = 0; i < precioTexto.length(); i++) {
+                        if (!Character.isDigit(precioTexto.charAt(i)) && precioTexto.charAt(i) != '.') {
+                            precioValido = false;
+                        }
+                    }
+
+                    if (precioValido == false) {
+                        JOptionPane.showMessageDialog(null, "El precio debe ser numérico");
+                    }
+                }
+
+            } while (precioTexto.trim().equals("") || precioValido == false);
+
+            double precio = Double.parseDouble(precioTexto);
             productos.setPrecioProducto(precio);
             JOptionPane.showMessageDialog(null, "Producto actualizado correctamente");
         } else {
@@ -81,8 +190,40 @@ public class Pedido {
     }
 
     public static void borrarProductoMenu() {
+        if (contador == 0) {
+            JOptionPane.showMessageDialog(null, "No hay productos en el menú");
+            return;
+        }
 
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite el codigo a buscar"));
+        String codigoTexto = "";
+        boolean codigoValido = false;
+
+        do {
+            codigoTexto = JOptionPane.showInputDialog("Digite el codigo a buscar");
+
+            if (codigoTexto == null) {
+                return;
+            }
+
+            if (codigoTexto.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "El código no puede ir vacío");
+            } else {
+                codigoValido = true;
+
+                for (int i = 0; i < codigoTexto.length(); i++) {
+                    if (!Character.isDigit(codigoTexto.charAt(i))) {
+                        codigoValido = false;
+                    }
+                }
+
+                if (codigoValido == false) {
+                    JOptionPane.showMessageDialog(null, "El código debe ser numérico");
+                }
+            }
+
+        } while (codigoTexto.trim().equals("") || codigoValido == false);
+
+        int codigo = Integer.parseInt(codigoTexto);
         int indice = -1;
 
         for (int i = 0; i < contador; i++) {
@@ -91,13 +232,16 @@ public class Pedido {
                 break;
             }
         }
+
         if (indice == -1) {
             JOptionPane.showMessageDialog(null, "No se encontro el producto");
             return;
         }
+
         for (int i = indice; i < contador - 1; i++) {
-            producto[i] = producto[1];
+            producto[i] = producto[i + 1];
         }
+
         producto[contador - 1] = null;
         contador--;
 
@@ -126,7 +270,35 @@ public class Pedido {
             return;
         }
 
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite el codigo del producto que desea agregar"));
+        String codigoTexto = "";
+        boolean codigoValido = false;
+
+        do {
+            codigoTexto = JOptionPane.showInputDialog("Digite el codigo del producto que desea agregar");
+
+            if (codigoTexto == null) {
+                return;
+            }
+
+            if (codigoTexto.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "El código no puede ir vacío");
+            } else {
+                codigoValido = true;
+
+                for (int i = 0; i < codigoTexto.length(); i++) {
+                    if (!Character.isDigit(codigoTexto.charAt(i))) {
+                        codigoValido = false;
+                    }
+                }
+
+                if (codigoValido == false) {
+                    JOptionPane.showMessageDialog(null, "El código debe ser numérico");
+                }
+            }
+
+        } while (codigoTexto.trim().equals("") || codigoValido == false);
+
+        int codigo = Integer.parseInt(codigoTexto);
         Producto productos = null;
 
         for (int i = 0; i < contador; i++) {
@@ -166,7 +338,35 @@ public class Pedido {
 
         JOptionPane.showMessageDialog(null, informacion);
 
-        int codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite el codigo del producto que desea eliminar del pedido"));
+        String codigoTexto = "";
+        boolean codigoValido = false;
+
+        do {
+            codigoTexto = JOptionPane.showInputDialog("Digite el codigo del producto que desea eliminar del pedido");
+
+            if (codigoTexto == null) {
+                return;
+            }
+
+            if (codigoTexto.trim().equals("")) {
+                JOptionPane.showMessageDialog(null, "El código no puede ir vacío");
+            } else {
+                codigoValido = true;
+
+                for (int i = 0; i < codigoTexto.length(); i++) {
+                    if (!Character.isDigit(codigoTexto.charAt(i))) {
+                        codigoValido = false;
+                    }
+                }
+
+                if (codigoValido == false) {
+                    JOptionPane.showMessageDialog(null, "El código debe ser numérico");
+                }
+            }
+
+        } while (codigoTexto.trim().equals("") || codigoValido == false);
+
+        int codigo = Integer.parseInt(codigoTexto);
         int indice = -1;
 
         for (int i = 0; i < contadorCarrito; i++) {
