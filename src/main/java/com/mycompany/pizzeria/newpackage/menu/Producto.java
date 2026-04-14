@@ -57,6 +57,6 @@ public class Producto {
     public String toString() {
         return "Codigo: "+ codigo +"\n"+
                 categoriaProducto +": "+ nombre +"\n"+
-                "Precio: "+ precioProducto;
+                "Precio: ₡"+ precioProducto;
     } 
 }    

@@ -47,7 +47,7 @@ public class Pedido {
         if (contador < producto.length) {
             int codigo = contador + 1;
             String titulo = JOptionPane.showInputDialog("Nombre del producto: ");
-            double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del producto: "));
+            double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del producto en ₡: "));
 
             Categorias categorias[] = Categorias.values();
             int seleccion = JOptionPane.showOptionDialog(null, "Escoja la categoria del producto: ", "Categorias",
@@ -208,7 +208,7 @@ public class Pedido {
             total += carrito[i].getPrecioProducto();
         }
 
-        informacion += "Total a pagar: " + total + "\n\n";
+        informacion += "Total a pagar: ₡" + total + "\n\n";
         informacion += "¿Desea confirmar el pago?";
 
         String opcionesConfirmar[] = {"Confirmar", "Volver"};
@@ -249,7 +249,7 @@ public class Pedido {
             recibo += "\n";
         }
 
-        recibo += "Total cancelado: " + total;
+        recibo += "Total cancelado: ₡" + total;
 
         JOptionPane.showMessageDialog(null, recibo);
 
